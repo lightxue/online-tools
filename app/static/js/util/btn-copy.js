@@ -26,6 +26,7 @@ define(function (require) {
               title="已复制">复制</button>'
     });
 
-    Vue.nextTick(init);
+    //Vue.nextTick(init);
+    setTimeout(init, 1500);
 
 });

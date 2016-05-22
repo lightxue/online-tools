@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="在线工具">
+    <meta name="author" content="lightxue">
+    <link rel="icon" href="/static/image/favicon.ico">
+
+    <title>Geek工具箱</title>
+
+    <link href="/static/lib/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/lib/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-9 col-md-0 main" id="main">
+          <div class="col-sm-8 col-md-8 col-md-offset-2">
+            <h1 class="page-header">MD5/SHA1
+              <a class="permalink" href="#">
+                <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+              </a>
+            </h1>
+
+            <div class="input-value">
+              <div class="form-group">
+                <label>待哈希字符串:</label>
+                <textarea class="form-control" rows="5" v-model="text" v-on:change="change" v-on:keyup="change"></textarea>
+              </div>
+
+              <div class="form-group collapse" id="key">
+                <label for="key">key:</label>
+                <input type="text" class="form-control" id="key" v-model="key" v-on:change="change" v-on:keyup="change">
+              </div>
+
+              <label class="btn btn-default btn-check">
+                <input type="checkbox" v-model="is_upper" v-on:change="change"> 大写
+              </label>
+              <label class="btn btn-default btn-check">
+                <input type="checkbox" v-model="is_beautify" v-on:change="change"> 分隔
+              </label>
+              <label class="btn btn-default btn-check">
+                <input type="checkbox" v-model="is_hmac" v-on:change="toggle_hmac"> HMAC
+              </label>
+
+
+            </div>
+
+            <div class="output-value">
+              <div class="form-group">
+                <label for="md5">MD5:</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" v-model="md5" id="md5">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-copy"
+                      data-clipboard-target="#md5"
+                      data-toggle="tooltip"
+                      data-trigger="manual"
+                      title="已复制">复制</button>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="sha1">SHA1:</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" v-model="sha1" id="sha1">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default btn-copy"
+                      data-clipboard-target="#sha1"
+                      data-toggle="tooltip"
+                      data-trigger="manual"
+                      title="已复制">复制</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-sm-3 col-md-2 col-md-offset-8  sidebar" id="treeview">
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" data-main="/static/js/app" src="/static/lib/requirejs/2.1.20/require.js"></script>
+  </body>
+</html>

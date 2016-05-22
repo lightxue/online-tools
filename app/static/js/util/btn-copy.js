@@ -26,7 +26,6 @@ define(function (require) {
               title="已复制">复制</button>'
     });
 
-    return {
-        init: init
-    };
+    Vue.nextTick(init);
+
 });

@@ -90,7 +90,6 @@ define(function (require) {
                     is_beautify: this.is_beautify,
                     is_hmac: this.is_hmac
                 });
-                console.log('qs', qs);
                 if (this.text) {
                     var link = location.origin + location.pathname + '?' + qs;
                 }
@@ -116,5 +115,5 @@ define(function (require) {
     });
 
     vue.init();
-    btn_copy.init();
+    //btn_copy.init();
 });

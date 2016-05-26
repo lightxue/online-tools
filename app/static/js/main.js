@@ -8,7 +8,7 @@ define(function (require) {
             nodes: [
                 {
                     text: 'MD5/SHA1',
-                    href: '/hash/md5-sha1'
+                    href: '/encoding/hash'
                 }
             ]
         },
@@ -50,7 +50,11 @@ define(function (require) {
         window.open(data.href, '_self');
     })
 
-    require('encoding/hash')
+    var get_mdl_path = function () {
+        return location.pathname.substr(1);
+    }
+
+    require([get_mdl_path()]);
 
 });
 

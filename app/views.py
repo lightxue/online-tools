@@ -13,10 +13,10 @@ from app import app
 
 @app.route('/')
 def index():
-    return flask.render_template('index.html')
+    return flask.redirect(flask.url_for('hash'))
 
 @app.route('/encoding/hash')
-def md5_sha1():
+def hash():
     return flask.render_template('encoding/hash.html')
 
 @app.route('/static/<path:path>')

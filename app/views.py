@@ -19,6 +19,10 @@ def index():
 def hash():
     return flask.render_template('encoding/hash.html')
 
+@app.route('/develop/regex')
+def regex():
+    return flask.render_template('develop/regex.html')
+
 @app.route('/static/<path:path>')
 def send_static(path):
     return flask.send_from_directory('static', path)

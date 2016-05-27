@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Geek工具箱 - 正则表达式测试{% endblock%}
+
+{% block head %}
+  {{ super() }}
+{% endblock %}
+
+{% block tool %}
+{% raw %}
+<h1 class="page-header">正则表达式测试
+  <button-share :link="link"></button-share>
+</h1>
+
+<div class="input-value">
+  <div class="form-group">
+    <label for="re">正则表达式:</label>
+    <div class="input-group">
+      <input type="text" class="form-control code" id="re" v-model="re" v-on:change("change") v-on:keyup="change">
+      <span class="input-group-btn">
+        <button-copy target="#re"></button-copy>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>匹配的字符串:</label>
+    <textarea class="form-control code" rows="5" id="text" v-model="text" v-on:change="change" v-on:keyup="change"></textarea>
+  </div>
+
+  <label class="btn btn-default btn-check">
+    <input type="checkbox" v-model="is_ig" v-on:change="change"> 忽略大小写
+  </label>
+</div>
+
+<div class="output-value">
+  <label>匹配结果:</label>
+  <div id="match-result" class="code">
+  <div>
+</div>
+{% endraw %}
+{% endblock %}
+

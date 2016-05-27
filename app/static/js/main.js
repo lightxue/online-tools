@@ -12,15 +12,24 @@ define(function (require) {
                 }
             ]
         },
+        //{
+            //text: '编码解码',
+            //nodes: [
+                //{
+                    //text: 'Base64',
+                //}, {
+                    //text: 'URL'
+                //}, {
+                    //text: 'HTML'
+                //}
+            //]
+        //},
         {
-            text: '编码解码',
+            text: '开发工具',
             nodes: [
                 {
-                    text: 'Base64',
-                }, {
-                    text: 'URL'
-                }, {
-                    text: 'HTML'
+                    text: '正则测试',
+                    href: '/develop/regex'
                 }
             ]
         }

@@ -1,5 +1,7 @@
 define(function (require) {
-    function queryStr2Obj() {
+    var $ = require('jquery');
+
+    function qstr_2_obj() {
         var pairs = location.search.slice(1).split('&');
 
         var result = {};
@@ -11,7 +13,7 @@ define(function (require) {
         return result;
     }
 
-    function obj2QueryStr(obj) {
+    function obj_2_qstr(obj) {
         var str = [];
         for(var p in obj) {
             if (obj.hasOwnProperty(p)) {
@@ -21,8 +23,18 @@ define(function (require) {
         return str.join("&");
     }
 
+    function html_dec(s) {
+      return $("<div/>").html(s).text();
+    }
+
+    function html_enc(s) {
+      return $("<div/>").text(s).html();
+    }
+
     return {
-        queryStr2Obj: queryStr2Obj,
-        obj2QueryStr: obj2QueryStr
+        qstr_2_obj: qstr_2_obj,
+        obj_2_qstr: obj_2_qstr,
+        html_enc: html_enc,
+        html_dec: html_dec
     }
 });

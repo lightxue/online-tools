@@ -28,7 +28,7 @@ define(function (require) {
         return sha1;
     }
 
-    var params = util.queryStr2Obj();
+    var params = util.qstr_2_obj();
     var vue_data = {
       text: params.text ? params.text : '',
       md5: '',
@@ -84,7 +84,7 @@ define(function (require) {
             },
 
             update_link: function() {
-                var qs = util.obj2QueryStr({
+                var qs = util.obj_2_qstr({
                     text: this.text,
                     is_upper: this.is_upper,
                     is_beautify: this.is_beautify,

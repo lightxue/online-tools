@@ -39,7 +39,9 @@ define(function (require) {
         for (var idx in nodes) {
             var node = nodes[idx];
             if (node.href === location.pathname) {
+                // 设置当前node为选中状态
                 node.state = {selected: true};
+                break;
             }
             if ('nodes' in node) {
                 select_node(node.nodes);
@@ -63,6 +65,7 @@ define(function (require) {
         return location.pathname.substr(1);
     }
 
+    // 加载对应模块js
     require([get_mdl_path()]);
 
 });

@@ -9,22 +9,22 @@ define(function (require) {
     var format_md5 = function (md5) {
         // 8-4-4-4-12
         md5 = md5.substr(0, 8) + '-' +
-            md5.substr(8, 4) + '-' +
-            md5.substr(12, 4) + '-' +
-            md5.substr(16, 4) + '-' +
-            md5.substr(20, 12);
+              md5.substr(8, 4) + '-' +
+              md5.substr(12, 4) + '-' +
+              md5.substr(16, 4) + '-' +
+              md5.substr(20, 12);
         return md5;
     }
 
     var format_sha1 = function (sha1) {
         // 8-4-4-4-4-4-12
         sha1 = sha1.substr(0, 8) + '-' +
-            sha1.substr(8, 4) + '-' +
-            sha1.substr(12, 4) + '-' +
-            sha1.substr(16, 4) + '-' +
-            sha1.substr(20, 4) + '-' +
-            sha1.substr(24, 4) + '-' +
-            sha1.substr(28, 12);
+               sha1.substr(8, 4) + '-' +
+               sha1.substr(12, 4) + '-' +
+               sha1.substr(16, 4) + '-' +
+               sha1.substr(20, 4) + '-' +
+               sha1.substr(24, 4) + '-' +
+               sha1.substr(28, 12);
         return sha1;
     }
 
@@ -99,12 +99,6 @@ define(function (require) {
                 this.link = link;
             },
 
-            toggle_hmac: function () {
-                var action = this.is_hmac ? 'show' : 'hide';
-                $('#key').collapse(action);
-                this.change();
-            },
-
             init: function () {
               if (this.text) {
                 this.change();
@@ -115,5 +109,4 @@ define(function (require) {
     });
 
     vue.init();
-    //btn_copy.init();
 });

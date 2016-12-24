@@ -7,7 +7,7 @@ define(function (require) {
     Vue.component('button-share', {
         props: ['link'],
         template: '\
-            <a class="permalink btn-share" href="{{ link }}">\
+            <a class="permalink btn-share" :href="link">\
               <span class="glyphicon glyphicon-share"\
                 aria-hidden="true"></span>\
             </a>'

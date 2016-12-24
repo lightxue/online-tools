@@ -7,7 +7,7 @@
 
 
 import flask
-from flask import request
+from collections import namedtuple
 
 from app import app
 
@@ -15,14 +15,21 @@ from app import app
 def index():
     return flask.redirect(flask.url_for('hash'))
 
-@app.route('/encoding/hash')
-def hash():
-    return flask.render_template('encoding/hash.html')
-
-@app.route('/develop/regex')
-def regex():
-    return flask.render_template('develop/regex.html')
-
 @app.route('/static/<path:path>')
 def send_static(path):
     return flask.send_from_directory('static', path)
+
+def register_route(path, name):
+    def render():
+        return flask.render_template('{}.html'.format(path))
+    app.add_url_rule(path, name, render)
+
+
+Rule = namedtuple('Rule', ['path', 'name'])
+rules = [
+    Rule('/encoding/hash', 'hash'),
+    Rule('/develop/regex', 'regex'),
+]
+
+for rule in rules:
+    register_route(rule.path, rule.name)

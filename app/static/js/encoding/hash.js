@@ -44,6 +44,7 @@ define(function (require) {
         el: '#tool',
         data: vue_data,
         methods: {
+
             change: function (event) {
                 this.update_md5();
                 this.update_sha1();

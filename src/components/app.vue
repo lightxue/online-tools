@@ -54,4 +54,9 @@ label {
   font-size: 16px;
   font-weight: 7000;
 }
+
+.input-group {
+  margin-top: 20px;
+}
+
 </style>

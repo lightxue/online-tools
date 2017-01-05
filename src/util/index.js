@@ -20,7 +20,27 @@ function obj_2_qstr(obj) {
     return str.join("&");
 }
 
+function html_enc(str) {
+    return str
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function html_dec(str){
+    return str
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&amp;/g, '&');
+}
+
 export default {
     qstr_2_obj,
-    obj_2_qstr
+    obj_2_qstr,
+    html_enc,
+    html_dec,
 }

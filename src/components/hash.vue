@@ -9,28 +9,27 @@
       <el-input type="textarea"
                 autofocus
                 :autosize="{ minRows: 5}"
-                v-model="text"
-                @change="change">
+                v-model="text">
       </el-input>
     </div>
 
     <transition class="fade">
     <div v-if="is_hmac" id="key">
       <label for="key">key:</label>
-      <el-input v-model="key" @change="change"></el-input>
+      <el-input v-model="key"></el-input>
     </div>
     </transition>
 
     <div id="options">
-      <el-checkbox v-model="is_upper" @change="change">大写</el-checkbox>
-      <el-checkbox v-model="is_beautify" @change="change">分隔</el-checkbox>
-      <el-checkbox v-model="is_hmac" @change="change">HMAC</el-checkbox>
+      <el-checkbox v-model="is_upper">大写</el-checkbox>
+      <el-checkbox v-model="is_beautify">分隔</el-checkbox>
+      <el-checkbox v-model="is_hmac">HMAC</el-checkbox>
     </div>
 
     <div id="output">
-      <copy-input label="MD5:"  :text="md5"/>
-      <copy-input label="SHA1:" :text="sha1"/>
-      <copy-input label="SHA256:" :text="sha256"/>
+      <copy-input readonly label="MD5:"  v-model="md5"/>
+      <copy-input readonly label="SHA1:" v-model="sha1"/>
+      <copy-input readonly label="SHA256:" v-model="sha256"/>
     </div>
   </div>
 </template>
@@ -53,6 +52,20 @@ var beautify = function(text, fmt_seg) {
   return res.join('-');
 }
 
+var sha = function (hash_type, text, key) {
+  var sha = new jsSHA(hash_type, 'TEXT');
+
+  if (key.length > 0) {
+    sha.setHMACKey(key, 'TEXT');
+    sha.update(text);
+    return sha.getHMAC('HEX');
+  }
+  else {
+    sha.update(text);
+    return sha.getHash('HEX');
+  }
+}
+
 export default {
   name: 'hash',
 
@@ -60,7 +73,6 @@ export default {
     CopyInput,
     ButtonShare,
   },
-
 
   data () {
     var params = util.qstr_2_obj();
@@ -71,103 +83,67 @@ export default {
       is_hmac: params.is_hmac === 'true',
       text: params.text ? params.text : '',
       key: params.key ? params.key : '',
-      md5: '',
-      sha1: '',
-      sha256: '',
     }
   },
 
   computed: {
+    md5: function() {
+      if (!this.text) {
+        return '';
+      }
+      var md5 = MD5(this.text, this.is_hmac ? this.key : '');
+      md5 = this.upper(md5);
+      md5 = this.beautify(md5, [8, 4, 4, 4, 12]);
+      return md5;
+    },
+
+    sha1: function() {
+      if (!this.text) {
+        return '';
+      }
+      var sha1 = sha('SHA-1', this.text, this.is_hmac ? this.key: '');
+      sha1 = this.upper(sha1);
+      sha1 = this.beautify(sha1, [8, 4, 4, 4, 4, 4, 12]);
+      return sha1;
+    },
+
+    sha256: function() {
+      if (!this.text) {
+        return '';
+      }
+      var sha256 = sha('SHA-256', this.text, this.is_hmac ? this.key: '');
+      sha256 = this.upper(sha256);
+      sha256 = this.beautify(sha256, [8, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 12]);
+      return sha256;
+    },
+
     share_params: function() {
         if (!this.text) {
           return {};
         }
-        return {
-          text: this.text,
-          key: this.key,
-          is_upper: this.is_upper,
-          is_beautify: this.is_beautify,
-          is_hmac: this.is_hmac,
-        }
-    }
-  },
-
-  created: function() {
-    if (this.text) {
-      this.change();
+        return this.$data;
     }
   },
 
   methods: {
-    change: function () {
-        this.update_md5();
-        this.update_sha1();
-        this.update_sha256();
-    },
-
-    update_md5: function () {
-      var md5 = MD5(this.text, this.is_hmac ? this.key : '');
+    upper: function(text) {
       if (this.is_upper) {
-        md5 = md5.toUpperCase();
+        return text.toUpperCase();
       }
-      if (this.is_beautify) {
-        md5 = beautify(md5, [8, 4, 4, 4, 12]);
-      }
-      this.md5 = md5;
+      return text;
     },
 
-    update_sha1: function () {
-      var sha1;
-      var sha = new jsSHA('SHA-1', 'TEXT');
-
-      if (this.is_hmac && this.key.length > 0) {
-        sha.setHMACKey(this.key, 'TEXT');
-        sha.update(this.text);
-        sha1 = sha.getHMAC('HEX');
-      }
-      else {
-        sha.update(this.text);
-        sha1 = sha.getHash('HEX');
-      }
-      if (this.is_upper) {
-        sha1 = sha1.toUpperCase();
-      }
+    beautify: function(text, fmt_seg) {
       if (this.is_beautify) {
-        sha1 = beautify(sha1, [8, 4, 4, 4, 4, 4, 12]);
+        return beautify(text, fmt_seg);
       }
-      this.sha1 = sha1;
-    },
-
-    update_sha256: function () {
-      var sha256;
-      var sha = new jsSHA('SHA-256', 'TEXT');
-
-      if (this.is_hmac && this.key.length > 0) {
-        sha.setHMACKey(this.key, 'TEXT');
-        sha.update(this.text);
-        sha256 = sha.getHMAC('HEX');
-      }
-      else {
-        sha.update(this.text);
-        sha256 = sha.getHash('HEX');
-      }
-      if (this.is_upper) {
-        sha256 = sha256.toUpperCase();
-      }
-      if (this.is_beautify) {
-        sha256 = beautify(sha256, [8, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 12]);
-      }
-      this.sha256 = sha256;
-    },
+      return text;
+    }
   }
 }
 </script>
 
 <style scoped>
-.input-group {
-  margin-top: 20px;
-}
-
 #options {
   margin-top: 10px;
 }

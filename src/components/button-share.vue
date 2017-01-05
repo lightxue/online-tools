@@ -1,10 +1,11 @@
 <template>
-  <a class="button-share el-icon-share" :href="link"></a>
+  <a class="button-share el-icon-share" :href="link" @click.prevent="handle_click"></a>
 </template>
 
 <script>
 
 import util from '../util'
+import clipboard from '../util/clipboard.js'
 
 export default {
   name: 'button-share',
@@ -30,6 +31,14 @@ export default {
   },
 
   methods: {
+    handle_click: function() {
+      if(clipboard.copy(this.link)) {
+        this.$message.success('分享链接已复制到剪贴板中');
+      }
+      else {
+        this.$message.error('分享链接复制失败！');
+      }
+    }
   }
 }
 </script>

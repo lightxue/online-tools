@@ -6,12 +6,11 @@
 
     <div class="input-group">
       <label for="text">待哈希字符串:</label>
-      <el-input
-        type="textarea"
-        :autosize="{ minRows: 5}"
-        :autofocus="true"
-        v-model="text"
-        @change="change">
+      <el-input type="textarea"
+                autofocus
+                :autosize="{ minRows: 5}"
+                v-model="text"
+                @change="change">
       </el-input>
     </div>
 

@@ -123,6 +123,10 @@ export default {
   margin: 1px .01em;
 }
 
+#regex .error-input input {
+  border-color: #FF4949;
+}
+
 #regex .error-input input:focus {
   border-color: #FF4949;
 }

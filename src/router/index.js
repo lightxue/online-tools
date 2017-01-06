@@ -4,6 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 import Hash from '../components//hash.vue'
+import URLCodec from '../components//url-codec.vue'
 import Regex from '../components/regex.vue'
 import TreeView from '../components/tree-view.vue'
 import Dummy from '../components/dummy-route-view.vue'
@@ -22,6 +23,12 @@ export default new Router({
                     label: '常用哈希',
                     path: 'hash',
                     component: Hash
+                },
+                {
+                    name: 'url_codec',
+                    label: 'URL编解码',
+                    path: 'url-codec',
+                    component: URLCodec
                 }
             ]
         }, {

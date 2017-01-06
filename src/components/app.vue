@@ -59,4 +59,23 @@ label {
   margin-top: 20px;
 }
 
+.error-input input:hover, .error-input textarea:hover {
+  border-color: #FF4949;
+}
+
+.error-input input:focus, .error-input textarea:focus {
+  border-color: #FF4949;
+}
+
+.error-input input, .error-input textarea {
+  border-color: #FF4949;
+}
+
+#options {
+  margin-top: 10px;
+}
+
+#options .option+.option {
+  margin-left: 30px;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div id="regex">
     <h1 class="page-header">正则测试
-      <button-share :params="share_params"></button-share>
+      <share-button :params="share_params"></share-button>
     </h1>
 
     <copy-input :class="{'error-input': !valid_re}"
@@ -32,7 +32,7 @@
 
 <script>
 import CopyInput from './copy-input.vue'
-import ButtonShare from './button-share.vue'
+import ShareButton from './share-button.vue'
 import util from '../util'
 
 export default {
@@ -40,7 +40,7 @@ export default {
 
   components: {
     CopyInput,
-    ButtonShare,
+    ShareButton,
   },
 
   data () {
@@ -121,13 +121,5 @@ export default {
   border-radius: 0.3em;
   padding: 0 .05em;
   margin: 1px .01em;
-}
-
-#regex .error-input input {
-  border-color: #FF4949;
-}
-
-#regex .error-input input:focus {
-  border-color: #FF4949;
 }
 </style>

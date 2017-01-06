@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="page-header">常用哈希
-      <button-share :params="share_params"></button-share>
+      <share-button :params="share_params"></share-button>
     </h1>
 
     <div class="input-group">
@@ -39,7 +39,7 @@ import MD5 from 'blueimp-md5'
 import jsSHA from 'jssha'
 
 import CopyInput from './copy-input.vue'
-import ButtonShare from './button-share.vue'
+import ShareButton from './share-button.vue'
 import util from '../util'
 
 var beautify = function(text, fmt_seg) {
@@ -71,7 +71,7 @@ export default {
 
   components: {
     CopyInput,
-    ButtonShare,
+    ShareButton,
   },
 
   data () {
@@ -144,10 +144,6 @@ export default {
 </script>
 
 <style scoped>
-#options {
-  margin-top: 10px;
-}
-
 #key {
   margin-top: 10px;
   margin-bottom: 10px;

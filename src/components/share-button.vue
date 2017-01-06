@@ -1,5 +1,5 @@
 <template>
-  <a class="button-share el-icon-share" :href="link" @click.prevent="handle_click"></a>
+  <a class="share-button el-icon-share" :href="link" @click.prevent="handle_click"></a>
 </template>
 
 <script>
@@ -8,7 +8,7 @@ import util from '../util'
 import clipboard from '../util/clipboard.js'
 
 export default {
-  name: 'button-share',
+  name: 'share-button',
 
   props: {
     url: String,
@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style scoped>
-.button-share {
+.share-button {
   text-decoration: none;
   color: #000;
   font-size: 0.5em;

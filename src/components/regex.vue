@@ -4,7 +4,8 @@
       <button-share :params="share_params"></button-share>
     </h1>
 
-    <copy-input label="正则表达式:"
+    <copy-input :class="{'error-input': !valid_re}"
+                label="正则表达式:"
                 v-model="re"/>
 
     <div class="input-group">
@@ -53,8 +54,18 @@ export default {
   },
 
   computed: {
+    valid_re: function() {
+        try {
+          var regex = new RegExp(this.re);
+        }
+        catch(err) {
+          return false;
+        }
+        return true;
+    },
+
     output: function() {
-      if (!this.re) {
+      if (!this.re || !this.valid_re) {
         return util.html_enc(this.text);
       }
 
@@ -94,11 +105,14 @@ export default {
 
 #regex #result {
   margin-top: 10px;
+  word-break: break-all;
+  white-space: pre-wrap;
 }
 
 #regex .output .match {
   font-size: 1.1em;
-  background-color: #FFFF00;
+  //background-color: #FFFF00;
+  background-color: #F7BA2A;
   border: 1px solid #ddd;
   -webkit-border-radius: 0.3em;
   -moz-border-radius: 0.3em;
@@ -107,7 +121,9 @@ export default {
   border-radius: 0.3em;
   padding: 0 .05em;
   margin: 1px .01em;
-  word-break: break-all;
-  white-space: pre-wrap;
+}
+
+#regex .error-input input:focus {
+  border-color: #FF4949;
 }
 </style>

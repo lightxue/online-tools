@@ -12,7 +12,8 @@
     "vue": "^2.0.5",
     "vue-router": "^2.1.0",
     "blueimp-md5": "^2.6.0",
-    "jssha": "^2.2.0"
+    "jssha": "^2.2.0",
+    "moment": "^2.17.1"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

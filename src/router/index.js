@@ -6,6 +6,7 @@ Vue.use(Router)
 import Hash from '../components//hash.vue'
 import URLCodec from '../components//url-codec.vue'
 import Regex from '../components/regex.vue'
+import TimeConverter from '../components/time-converter.vue'
 import TreeView from '../components/tree-view.vue'
 import Dummy from '../components/dummy-route-view.vue'
 import NotFound from '../components/404.vue'
@@ -41,7 +42,13 @@ export default new Router({
                     label: '正则测试',
                     path: 'regex',
                     component: Regex
-                }
+                },
+                {
+                    name: 'time_converter',
+                    label: '时间转换',
+                    path: 'time-converter',
+                    component: TimeConverter
+                },
             ]
         }, {
             path: '/',

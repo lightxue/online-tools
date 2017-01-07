@@ -23,7 +23,7 @@
         </el-switch>
       </span>
       <span class="option">
-        <copy-button :value="output" type="primary"></copy-button>
+        <copy-button :value="output" type="primary">复制结果</copy-button>
       </span>
     </div>
 

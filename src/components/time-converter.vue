@@ -5,26 +5,32 @@
     </h1>
 
     <div id="current">
-      <div class="item time">
-        <span>当前时间:</span>
-        <copy-button class="display-button"
-                     type="text"
-                     :value="current_time">
-          {{ this.current_time }}
-        </copy-button>
-      </div>
-      <div class="item timestamp">
-        <span>时间戳:</span>
-        <copy-button class="display-button"
-                     type="text"
-                     :value="current_timestamp">
-          {{ this.current_timestamp }}
-        </copy-button>
-      </div>
-      <div class="item from-now">
-          <span>距离现在: </span>
-          <span>{{ from_now }}</span>
-      </div>
+      <table>
+        <tr>
+          <td align='right'>当前时间: &nbsp;</td>
+          <td>
+            <copy-button class="display-button"
+                         type="text"
+                         :value="current_time">
+              {{ this.current_time }}
+            </copy-button>
+          </td>
+        </tr>
+        <tr>
+          <td align='right'>时间戳: &nbsp;</td>
+          <td>
+            <copy-button class="display-button"
+                         type="text"
+                         :value="current_timestamp">
+              {{ this.current_timestamp }}
+            </copy-button>
+          </td>
+        </tr>
+        <tr>
+          <td align='right'>距离现在: &nbsp;</td>
+          <td>{{ from_now }}</td>
+        </tr>
+      </table>
     </div>
 
     <div class="input-group" :class="{'error-input': this.input && !moment.isValid()}">
@@ -238,11 +244,17 @@ export default {
 
 #current {
   font-size: 18px;
-  text-align: center;
 }
 
-#current .item {
-  padding-top: 8px;
+#current table {
+  margin: 0 auto;
+}
+
+#current .display-button {
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  padding: 0;
 }
 
 .help-popover {
@@ -269,13 +281,6 @@ export default {
   margin-bottom: 5px;
   padding-left: 1em;
   list-style: none;
-}
-
-#current .display-button {
-  font-size: inherit;
-  font-family: inherit;
-  color: inherit;
-  padding: 0;
 }
 
 </style>

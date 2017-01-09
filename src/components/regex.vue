@@ -4,10 +4,6 @@
       <share-button :params="share_params"></share-button>
     </h1>
 
-    <copy-input :class="{'error-input': !valid_re}"
-                label="正则表达式:"
-                v-model="re"/>
-
     <div class="input-group">
       <label for="text">匹配的字符串:</label>
       <el-input type="textarea"
@@ -16,6 +12,10 @@
                 v-model="text">
       </el-input>
     </div>
+
+    <copy-input :class="{'error-input': !valid_re}"
+                label="正则表达式:"
+                v-model="re"/>
 
     <div id="options">
       <el-checkbox v-model="is_ig">忽略大小写</el-checkbox>

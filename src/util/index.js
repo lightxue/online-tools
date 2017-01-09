@@ -1,3 +1,5 @@
+import he from 'he'
+
 function qstr_2_obj() {
     var pairs = location.search.slice(1).split('&');
 
@@ -51,7 +53,7 @@ function parse_num(str, default_value) {
 export default {
     qstr_2_obj,
     obj_2_qstr,
-    html_enc,
-    html_dec,
+    html_enc: (text) => {return he.encode(text, {'useNamedReferences': true})},
+    html_dec: he.decode,
     parse_num,
 }

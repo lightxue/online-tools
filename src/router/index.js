@@ -5,6 +5,7 @@ Vue.use(Router)
 
 import Hash from '../components//hash.vue'
 import URLCodec from '../components//url-codec.vue'
+import HTMLCodec from '../components//html-codec.vue'
 import Base64 from '../components//base64.vue'
 import QRCode from '../components//qrcode.vue'
 import Regex from '../components/regex.vue'
@@ -32,6 +33,12 @@ export default new Router({
                     label: 'URL编解码',
                     path: 'url-codec',
                     component: URLCodec
+                },
+                {
+                    name: 'html_codec',
+                    label: 'HTML编解码',
+                    path: 'html-codec',
+                    component: HTMLCodec
                 },
                 {
                     name: 'base64',

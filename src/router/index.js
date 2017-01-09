@@ -6,6 +6,7 @@ Vue.use(Router)
 import Hash from '../components//hash.vue'
 import URLCodec from '../components//url-codec.vue'
 import HTMLCodec from '../components//html-codec.vue'
+import UTF8Codec from '../components//utf8-codec.vue'
 import Base64 from '../components//base64.vue'
 import QRCode from '../components//qrcode.vue'
 import Regex from '../components/regex.vue'
@@ -30,15 +31,21 @@ export default new Router({
                 },
                 {
                     name: 'url_codec',
-                    label: 'URL编解码',
+                    label: 'URL',
                     path: 'url-codec',
                     component: URLCodec
                 },
                 {
                     name: 'html_codec',
-                    label: 'HTML编解码',
+                    label: 'HTML',
                     path: 'html-codec',
                     component: HTMLCodec
+                },
+                {
+                    name: 'utf8_codec',
+                    label: 'UTF-8',
+                    path: 'utf8-codec',
+                    component: UTF8Codec
                 },
                 {
                     name: 'base64',

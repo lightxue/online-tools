@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import Codec from './codec.vue'
 import util from '../util'
+import Codec from './codec.vue'
 
 export default {
   name: 'html_codec',

@@ -101,6 +101,8 @@ export default {
         this.output = enc_func(this.input);
       }
       catch (err) {
+        console.log('encode/decode error');
+        console.log(err);
         this.is_valid = false;
         this.output = '';
       }

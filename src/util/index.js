@@ -51,10 +51,28 @@ function parse_num(str, default_value) {
     }
 }
 
+function hex_esc(str) {
+    var length = str.length;
+    var index = -1;
+    var result = '';
+    var hex;
+    while (++index < length) {
+        hex = str.charCodeAt(index).toString(16).toUpperCase();
+        result += '\\x' + ('00' + hex).slice(-2);
+    }
+    return result;
+}
+
+function hex_unesc(str) {
+    return eval('\'' + str + '\'');
+}
+
 export default {
     qstr_2_obj,
     obj_2_qstr,
     html_enc: HtmlEntities.encode,
     html_dec: HtmlEntities.decode,
     parse_num,
+    hex_esc,
+    hex_unesc,
 }

@@ -2,17 +2,19 @@
   <div>
     <codec @change="handle_change"
            ref="codec"
-           title="Base64编解码">
+           title="UTF-8编解码">
     </codec>
   </div>
 </template>
 
 <script>
-import {Base64} from 'js-base64'
+import utf8 from 'utf8'
+
+import util from '../util'
 import Codec from './codec.vue'
 
 export default {
-  name: 'base64',
+  name: 'utf8_codec',
 
   components: {
     Codec,
@@ -29,7 +31,9 @@ export default {
   methods: {
     handle_change: function() {
       var codec = this.$refs.codec;
-      var func = codec.is_enc ? Base64.encode : Base64.decode;
+      var enc = (text) => {return util.hex_esc(utf8.encode(text));}
+      var dec = (text) => {return utf8.decode(util.hex_unesc(text));}
+      var func = codec.is_enc ? enc : dec;
       codec.encode(func);
     },
   }

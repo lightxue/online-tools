@@ -2,16 +2,17 @@
   <div>
     <codec @change="handle_change"
            ref="codec"
-           title="URL编解码">
+           title="Base64">
     </codec>
   </div>
 </template>
 
 <script>
+import {Base64} from 'js-base64'
 import Codec from './codec.vue'
 
 export default {
-  name: 'url_codec',
+  name: 'base64',
 
   components: {
     Codec,
@@ -28,7 +29,7 @@ export default {
   methods: {
     handle_change: function() {
       var codec = this.$refs.codec;
-      var func = codec.is_enc ? encodeURIComponent : decodeURIComponent;
+      var func = codec.is_enc ? Base64.encode : Base64.decode;
       codec.encode(func);
     },
   }

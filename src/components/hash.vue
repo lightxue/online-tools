@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="page-header">常用哈希
+    <h1 class="page-header">MD5/SHA
       <share-button :params="share_params"></share-button>
     </h1>
 

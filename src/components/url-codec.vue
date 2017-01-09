@@ -22,18 +22,18 @@
                    off-text="解码">
         </el-switch>
       </span>
-      <span class="option">
-        <copy-button :value="output" type="primary">复制结果</copy-button>
-      </span>
     </div>
 
-    <div class="input-group">
+    <div id="output">
       <label for="text">输出字符串:</label>
       <el-input type="textarea"
                 readonly
                 :autosize="{ minRows: 8}"
                 v-model="output">
       </el-input>
+      <div class="copy">
+        <copy-button :value="output" type="primary">复制结果</copy-button>
+      </div>
     </div>
   </div>
 </template>
@@ -92,5 +92,7 @@ export default {
 </script>
 
 <style scoped>
-
+#output .copy {
+  margin-top: 10px;
+}
 </style>

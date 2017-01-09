@@ -22,7 +22,7 @@ export default new Router({
             children: [
                 {
                     name: 'hash',
-                    label: '常用哈希',
+                    label: 'MD5/SHA',
                     path: 'hash',
                     component: Hash
                 },

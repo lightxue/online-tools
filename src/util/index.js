@@ -1,4 +1,5 @@
 import he from 'he'
+import {AllHtmlEntities as HtmlEntities} from 'html-entities'
 
 function qstr_2_obj() {
     var pairs = location.search.slice(1).split('&');
@@ -53,7 +54,7 @@ function parse_num(str, default_value) {
 export default {
     qstr_2_obj,
     obj_2_qstr,
-    html_enc: (text) => {return he.encode(text, {'useNamedReferences': true})},
-    html_dec: he.decode,
+    html_enc: HtmlEntities.encode,
+    html_dec: HtmlEntities.decode,
     parse_num,
 }

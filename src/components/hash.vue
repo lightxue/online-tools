@@ -88,9 +88,6 @@ export default {
 
   computed: {
     md5: function() {
-      if (!this.text) {
-        return '';
-      }
       var md5 = MD5(this.text, this.is_hmac ? this.key : '');
       md5 = this.upper(md5);
       md5 = this.beautify(md5, [8, 4, 4, 4, 12]);
@@ -98,9 +95,6 @@ export default {
     },
 
     sha1: function() {
-      if (!this.text) {
-        return '';
-      }
       var sha1 = sha('SHA-1', this.text, this.is_hmac ? this.key: '');
       sha1 = this.upper(sha1);
       sha1 = this.beautify(sha1, [8, 4, 4, 4, 4, 4, 12]);
@@ -108,9 +102,6 @@ export default {
     },
 
     sha256: function() {
-      if (!this.text) {
-        return '';
-      }
       var sha256 = sha('SHA-256', this.text, this.is_hmac ? this.key: '');
       sha256 = this.upper(sha256);
       sha256 = this.beautify(sha256, [8, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 12]);

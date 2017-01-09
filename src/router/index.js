@@ -5,6 +5,7 @@ Vue.use(Router)
 
 import Hash from '../components//hash.vue'
 import URLCodec from '../components//url-codec.vue'
+import QRCode from '../components//qrcode.vue'
 import Regex from '../components/regex.vue'
 import TimeConverter from '../components/time-converter.vue'
 import TreeView from '../components/tree-view.vue'
@@ -30,7 +31,13 @@ export default new Router({
                     label: 'URL编解码',
                     path: 'url-codec',
                     component: URLCodec
-                }
+                },
+                {
+                    name: 'qrcode',
+                    label: '二维码',
+                    path: 'qrcode',
+                    component: QRCode
+                },
             ]
         }, {
             label: '开发工具',

@@ -38,9 +38,20 @@ function html_dec(str){
         .replace(/&amp;/g, '&');
 }
 
+function parse_num(str, default_value) {
+    var n = Number(str);
+    if (isNaN(n)) {
+        return default_value;
+    }
+    else {
+        return n;
+    }
+}
+
 export default {
     qstr_2_obj,
     obj_2_qstr,
     html_enc,
     html_dec,
+    parse_num,
 }

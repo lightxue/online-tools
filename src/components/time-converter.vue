@@ -66,6 +66,7 @@
             <ul class="list">
               <li>2006-01-02</li>
               <li>20060102</li>
+              <li>2006年01月02日</li>
             </ul>
           </div>
           <div class="format">

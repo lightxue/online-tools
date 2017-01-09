@@ -5,7 +5,7 @@
     </h1>
 
     <div class="input-group" :class="{'error-input': !is_valid}">
-      <label for="text">输入字符串:</label>
+      <label for="text">{{ is_enc ? '原始' : '编码' }}字符串:</label>
       <el-input type="textarea"
                 @change="handle_change"
                 autofocus
@@ -16,18 +16,13 @@
 
     <div id="options">
       <span class="option">
-        <el-switch v-model="is_enc"
-                   @change="handle_change"
-                   on-color="#20A0FF"
-                   off-color="#20A0FF"
-                   on-text="编码"
-                   off-text="解码">
-        </el-switch>
+        <el-button :type="active_button(is_enc)"  @click="handle_switch(true)" >编码</el-button>
+        <el-button :type="active_button(!is_enc)" @click="handle_switch(false)">解码</el-button>
       </span>
     </div>
 
     <div id="output">
-      <label for="text">输出字符串:</label>
+      <label for="text">{{ is_enc ? '编码' : '原始' }}字符串:</label>
       <el-input type="textarea"
                 readonly
                 :autosize="{ minRows: 8}"
@@ -77,7 +72,7 @@ export default {
         input: this.input,
         is_enc: this.is_enc
       };
-    }
+    },
   },
 
   mounted: function() {
@@ -87,6 +82,11 @@ export default {
   methods: {
     handle_change: function() {
       this.$emit('change');
+    },
+
+    handle_switch: function(is_enc) {
+      this.is_enc = is_enc;
+      this.handle_change();
     },
 
     encode: function(enc_func) {
@@ -105,7 +105,14 @@ export default {
         this.output = '';
       }
     },
-  }
+
+    active_button: function(flag) {
+      if (flag) {
+        return 'primary';
+      }
+      return '';
+    }
+  },
 }
 </script>
 

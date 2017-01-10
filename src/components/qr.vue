@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import utf8 from 'utf8'
 import QRious from 'qrious'
 import clipboard from '../util/clipboard.js'
 
@@ -52,7 +53,7 @@ export default {
       try {
         const qr = new QRious({
           element: this.$el,
-          value: this.value,
+          value: utf8.encode(this.value),
           background: this.bgColor,
           backgroundAlpha: this.bgAlpha,
           foreground: this.fgColor,

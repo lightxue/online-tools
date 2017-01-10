@@ -1,16 +1,23 @@
 <template>
   <div id="app">
-    <el-row>
-      <el-col :span="10" :offset="4">
-        <transition name="fade" mode="out-in">
-          <router-view class="view"></router-view>
-        </transition>
-      </el-col>
+    <div id="main">
+      <el-row>
+        <el-col :span="10" :offset="4">
+          <transition name="fade" mode="out-in">
+            <router-view class="view"></router-view>
+          </transition>
+        </el-col>
 
-      <el-col :span="4" :offset="2">
-        <tree-view></tree-view>
-      </el-col>
-    </el-row>
+        <el-col :span="4" :offset="2">
+          <tree-view></tree-view>
+        </el-col>
+      </el-row>
+    </div>
+
+    <div id="footer">
+      <p>Copyright © 2017 - <a href="http://www.lightxue.com">Light Xue</a> --
+      <a href="https://github.com/lightxue/online-tools">Fork me</a><p>
+    </div>
   </div>
 </template>
 
@@ -34,8 +41,43 @@ export default {
 </script>
 
 <style>
-body {
-  font-size: 16px;
+
+html, body {
+  font-size:  16px;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#app {
+  min-height: 100%;
+  position: relative;
+}
+
+#main {
+  padding: 10px;
+  padding-bottom: 120px;    /* Height for the footer */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  padding-top: 20px;
+  margin-top: 20px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+  text-align: center;
+}
+
+#footer p {
+  margin:0;
+  padding:10px;
+}
+
+#footer a {
+  text-decoration: none;
 }
 
 .page-header .permalink {
@@ -78,4 +120,5 @@ label {
 #options .option+.option {
   margin-left: 30px;
 }
+
 </style>

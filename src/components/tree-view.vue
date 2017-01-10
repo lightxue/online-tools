@@ -40,10 +40,11 @@ export default {
 
 <style scoped>
 #tree-view {
-  position: fixed;
-  top: 51px;
+  //position: fixed;
+  //top: 51px;
+  //bottom: 0;
+  margin-top: 50px;
   width: 210px;
-  bottom: 0;
   z-index: 1000;
   display: block;
   padding: 20px;

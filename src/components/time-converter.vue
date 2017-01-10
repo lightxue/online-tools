@@ -139,10 +139,10 @@ export default {
           var is_match = (/^\d{8}$/.test(input));
           return is_match ? moment(input, 'YYYYMMDD') : invalid;
         },
-        () => {return moment(input, 'YYYY年MM月DD日');},
         () => {return moment.unix(Number(input));},
-        () => {return moment(input, 'HH:mm:ss');},
         () => {return moment(input);},
+        () => {return moment(input, 'HH:mm:ss');},
+        () => {return moment(input, 'YYYY年MM月DD日');},
       ];
 
       for (var i = 0; i < trys.length; ++i) {

@@ -23,62 +23,84 @@
 
       <transition name="fade" mode="out-in">
         <div class="config" v-if="is_config">
-          <div class="config-item">
-            <label for="level">纠错级别: </label>
-            <el-select v-model="level">
-              <el-option value="L" label="L (7%)" ></el-option>
-              <el-option value="M" label="M (15%)" ></el-option>
-              <el-option value="Q" label="Q (25%)" ></el-option>
-              <el-option value="H" label="H (30%)" ></el-option>
-            </el-select>
+          <div class="config-group">
+            <div class="config-item config-group1">
+              <label for="crisp">CRISP: </label>
+              <el-switch v-model="crisp"></el-switch>
+            </div>
+            <div class="config-item config-group2 min-version">
+              <label for="">最低版本</label>
+              <el-input-number v-model="min_version" :min="1" :max="40"></el-input-number>
+            </div>
+          </div>
+          <div class="config-group">
+            <div class="config-item config-group3">
+              <label for="level">容错级别: </label>
+              <el-select v-model="level">
+                <el-option value="L" label="L - 低(7%)" ></el-option>
+                <el-option value="M" label="M - 中(15%)" ></el-option>
+                <el-option value="Q" label="Q - 偏高(25%)" ></el-option>
+                <el-option value="H" label="H - 高(30%)" ></el-option>
+              </el-select>
+            </div>
           </div>
           <div class="config-item">
-            <label for="size">图像大小: </label>
-            <el-slider v-model="size"
-                       :min="32"
-                       :max="1024"
-                       show-input>
-            </el-slider>
-          </div>
-          <div class="config-item">
-            <label for="padding">边框: </label>
-            <el-slider v-model="padding"
+            <label for="rounded">圆角: </label>
+            <el-slider v-model="rounded"
                        :min="0"
-                       :max="72"
+                       :max="100"
                        show-input>
             </el-slider>
+          </div>
+          <div class="config-group">
+            <div class="config-item config-group1">
+              <label for="size">图像大小: </label>
+              <el-slider v-model="size"
+                         :min="32"
+                         :max="1024"
+                         show-input>
+              </el-slider>
+            </div>
+            <div class="config-item config-group2">
+              <label for="padding">边框: </label>
+              <el-slider v-model="padding"
+                         :min="0"
+                         :max="72"
+                         show-input>
+              </el-slider>
+            </div>
           </div>
           <div class="config-item">
             <label for="fg_color">颜色: </label>
             <input type="color" v-model="fg_color"></input>
           </div>
           <div class="config-item">
-            <label for="bg_color">前景颜色: </label>
+            <label for="bg_color">背景颜色: </label>
             <input type="color" v-model="bg_color"></input>
           </div>
-          <!--<div class="config-item">-->
-            <!--<label for="mime">图片格式: </label>-->
-            <!--<el-radio-group v-model="mime">-->
-              <!--<el-radio label="image/jpeg">jpg</el-radio>-->
-              <!--<el-radio label="image/png">png</el-radio>-->
-              <!--<el-radio label="image/svg">svg</el-radio>-->
-            <!--</el-radio-group>-->
-          <!--</div>-->
         </div>
       </transition>
     </div>
 
     <div id="output" align="center">
       <qr class="qr"
-          :value="text"
-          :fg-color="fg_color"
-          :bg-color="bg_color"
-          :bg_alpha="bg_alpha"
-          :fg_alpha="fg_alpha"
-          :level="level"
-          :mime="mime"
-          :padding="padding"
-          :size="size">
+        :text="text"
+        :crips="crips"
+        :min-version="min_version"
+        :level="level"
+        :size="size"
+        :fg-color="fg_color"
+        :bg-color="bg_color"
+        :rounded="rounded"
+        :padding="padding"
+        :mode="mode"
+        :m-size="m_size"
+        :m-pos-x="m_pos_x"
+        :m-pos-y="m_pos_y"
+        :label="label"
+        :font-name="font_name"
+        :font-color="font_color"
+        >
       </qr>
     </div>
   </div>
@@ -103,14 +125,21 @@ export default {
     return {
       is_config: params.is_config === 'true',
       text: params.text ? params.text : '',
-      bg_color: params.text ? params.bg_color : '#ffffff',
-      fg_color: params.text ? params.fg_color : '#000000',
-      bg_alpha: util.parse_num(params.bg_alpha, 1.0),
-      fg_alpha: util.parse_num(params.fg_alpha, 1.0),
-      level: params.level ? params.level : 'Q',
-      mime: params.mime ? params.mime : 'image/png',
-      padding: params.padding ? params.padding : 0,
+      crisp: params.crisp === 'false' ? false: true,
+      min_version: util.parse_num(params.min_version, 1),
+      level: params.level ? params.level : 'L',
       size: util.parse_num(params.size, 300),
+      fg_color: params.fg_color ? params.fg_color : '#333333',
+      bg_color: params.fg_color ? params.bg_color : '#ffffff',
+      rounded: util.parse_num(params.rounded, 0),
+      padding: util.parse_num(params.padding, 0),
+      mode: params.mode ? params.mode : 'plain',
+      m_size: util.parse_num(params.m_size, 30),
+      m_pos_x: util.parse_num(params.m_pos_x, 50),
+      m_pos_y: util.parse_num(params.m_pos_y, 50),
+      label: params.label ? params.label : '',
+      font_name: params.font_name ? params.font_name : '',
+      font_color: params.font_color ? params.font_color : '',
     };
   },
 
@@ -150,7 +179,18 @@ export default {
 
 .config .config-item {
   margin-top: 10px;
-  width: 61.5%;
+}
+
+.config-group1, .config-group2, .config-group3{
+  display: inline;
+}
+
+.config .el-input-number {
+  width: 120px;
+}
+
+.config .min-version .el-select {
+  width: 120px;
 }
 
 .config label {

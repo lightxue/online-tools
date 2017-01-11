@@ -229,7 +229,7 @@ export default {
       label: params.label ? params.label : 'lightxue',
       font_name: params.font_name ? params.font_name : 'Ubuntu',
       font_color: params.font_color ? params.font_color : '#ff9818',
-      show_dialog: true,
+      show_dialog: false,
       image: null,
       img_buf: '',
     };

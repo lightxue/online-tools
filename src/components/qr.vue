@@ -90,6 +90,8 @@ export default {
       type: String,
       default: '#333',
     },
+    image: {
+    },
   },
 
   beforeUpdate: function() {
@@ -134,7 +136,7 @@ export default {
           // quiet zone in modules
           quiet: this.padding,
           // modes: 'plain', 'label' or 'image'
-          mode: this.mode,
+          mode: this.mode == 'image' && this.image == null ? 'plain' : this.mode,
           // label/image size and pos in pc: 0..100
           mSize: this.mSize,
           mPosX: this.mPosX,
@@ -144,10 +146,9 @@ export default {
           fontname: this.fontName,
           fontcolor: this.fontColor,
           // image element
-          image: null
+          image: this.image,
         });
         if (qrcode) {
-          console.log(qrcode);
           this.$el.appendChild(qrcode);
         }
       }

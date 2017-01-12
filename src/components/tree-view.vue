@@ -2,7 +2,7 @@
   <div id="tree-view">
     <el-card :body-style="{ padding: '0px' }">
       <div slot="header" class="title">
-        <router-link to="/">Geek工具箱</router-link>
+        <router-link to="/">程序猿工具箱</router-link>
       </div>
       <div class="body">
         <template v-if="category.label"

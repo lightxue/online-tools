@@ -1,5 +1,5 @@
 <template>
-  <div id="tree-view">
+  <div id="tree-view" v-if="$route.name != 'home'">
     <el-card :body-style="{ padding: '0px' }">
       <div slot="header" class="title">
         <router-link to="/">程序猿工具箱</router-link>

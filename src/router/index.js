@@ -3,12 +3,13 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Hash from '../components//hash.vue'
-import URLCodec from '../components//url-codec.vue'
-import HTMLCodec from '../components//html-codec.vue'
-import UTF8Codec from '../components//utf8-codec.vue'
-import Base64 from '../components//base64.vue'
-import QRCode from '../components//qrcode.vue'
+import Home from '../components/home.vue'
+import Hash from '../components/hash.vue'
+import URLCodec from '../components/url-codec.vue'
+import HTMLCodec from '../components/html-codec.vue'
+import UTF8Codec from '../components/utf8-codec.vue'
+import Base64 from '../components/base64.vue'
+import QRCode from '../components/qrcode.vue'
 import Regex from '../components/regex.vue'
 import TimeConverter from '../components/time-converter.vue'
 import TreeView from '../components/tree-view.vue'
@@ -80,9 +81,11 @@ export default new Router({
             ]
         }, {
             path: '/',
-            redirect: '/encoding/hash'
+            name: 'home',
+            component: Home,
         }, {
             path: '/404',
+            name: 'not_found',
             component: NotFound
         }, {
             path: '*',

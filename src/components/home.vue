@@ -56,7 +56,7 @@ export default {
   font-weight: bold;
   margin-top: 10px;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   font-size: 19px;
 }
 
@@ -66,6 +66,14 @@ export default {
   display: block;
   margin-top: 8px;
 }
+
+.list a {
+  text-decoration: none;
+}
+.list a { color: #20A0FF; }
+.list a:visited { color: #20A0FF; }
+.list a:hover { color: #20A0FF; }
+.list a:active { color: #20A0FF; }
 
 .ascii-art {
   font-size: 10px;

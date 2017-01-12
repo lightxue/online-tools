@@ -16,7 +16,7 @@
 
     <div id="footer">
       <p>Copyright © 2017 - <a href="http://www.lightxue.com">Light Xue</a> --
-      <a href="https://github.com/lightxue/online-tools">Fork me</a><p>
+      <a href="https://github.com/lightxue/online-tools">F<span class="mask">or</span>k me</a><p>
     </div>
   </div>
 </template>
@@ -78,6 +78,18 @@ html, body {
 
 #footer a {
   text-decoration: none;
+}
+
+#footer a { color: #20A0FF; }
+#footer a:visited { color: #20A0FF; }
+#footer a:hover { color: #20A0FF; }
+#footer a:active { color: #20A0FF; }
+
+#footer .mask {
+  background-color: #20A0FF;
+  color: #20A0FF;
+  text-shadow: none;
+  border-radius: 0.3em;
 }
 
 .page-header .permalink {

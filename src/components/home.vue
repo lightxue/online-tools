@@ -7,24 +7,23 @@
       <p>
         实用程序猿工具，愿原力与你同在。
       </p>
-    </div>
-
-    <div class="list">
-      <template v-if="category.label"
-                v-for="category in tree">
-        <div class="item category">
-          {{ category.label }}
-        </div>
-        <ul>
-            <li v-if="node.label"
-                class="item node"
-                v-for="node in category.children">
-              <router-link :to="{name: node.name}">
-                {{ node.label }}
-              </router-link>
-            </li>
-        </ul>
-      </template>
+      <p class="list">
+        <template v-if="category.label"
+                  v-for="category in tree">
+          <h3 class="item category">
+            {{ category.label }}
+          </h3>
+          <ul>
+              <li v-if="node.label"
+                  class="item node"
+                  v-for="node in category.children">
+                <router-link :to="{name: node.name}">
+                  {{ node.label }}
+                </router-link>
+              </li>
+          </ul>
+        </template>
+      </p>
     </div>
   </div>
 </template>

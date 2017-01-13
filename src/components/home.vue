@@ -5,7 +5,7 @@
 
     <div class="content">
       <p>
-        在线程序猿工具箱，愿原力与你同在。
+        实用程序猿工具，愿原力与你同在。
       </p>
     </div>
 
@@ -15,12 +15,15 @@
         <div class="item category">
           {{ category.label }}
         </div>
-        <router-link v-if="node.label"
-                     class="item node"
-                     v-for="node in category.children"
-                     :to="{name: node.name}">
-          {{ node.label }}
-        </router-link>
+        <ul>
+            <li v-if="node.label"
+                class="item node"
+                v-for="node in category.children">
+              <router-link :to="{name: node.name}">
+                {{ node.label }}
+              </router-link>
+            </li>
+        </ul>
       </template>
     </div>
   </div>
@@ -55,16 +58,13 @@ export default {
 .list .category {
   font-weight: bold;
   margin-top: 10px;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  font-size: 19px;
+  font-size: 20px;
 }
 
 .list .node {
   font-size: 18px;
-  text-indent: 2em;
-  display: block;
-  margin-top: 8px;
+  margin-top: 10px;
+  list-style: none;
 }
 
 .list a {

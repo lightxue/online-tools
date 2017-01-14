@@ -1,8 +1,8 @@
 <template>
   <div
     :text="text"
-    :crips="crips"
-    :min-version="min-version"
+    :crisp="crisp"
+    :min-version="minVersion"
     :level="level"
     :size="size"
     :fg-color="fgColor"

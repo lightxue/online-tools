@@ -1,17 +1,9 @@
 <template>
   <div id="app">
     <div id="main">
-      <el-row>
-        <el-col :span="10" :offset="4">
-          <transition name="fade" mode="out-in">
-            <router-view class="view"></router-view>
-          </transition>
-        </el-col>
-
-        <el-col :span="4" :offset="2">
-          <tree-view></tree-view>
-        </el-col>
-      </el-row>
+      <transition name="fade" mode="out-in">
+        <router-view class="view"></router-view>
+      </transition>
     </div>
 
     <div id="footer">
@@ -22,12 +14,10 @@
 </template>
 
 <script>
-import TreeView from './tree-view.vue'
 
 export default {
 
   components: {
-    TreeView
   },
 
   data () {

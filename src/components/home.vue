@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main-frame>
     <h1 class="page-header">程序猿工具箱
     </h1>
 
@@ -25,12 +25,18 @@
         </template>
       </p>
     </div>
-  </div>
+  </main-frame>
 </template>
 
 <script>
+import MainFrame from './main-frame.vue'
+
 export default {
   name: 'home',
+
+  components: {
+    MainFrame,
+  },
 
   data () {
     return {

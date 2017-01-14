@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main-frame>
     <h1 class="page-header"> {{ title }}
       <share-button :params="share_params"></share-button>
     </h1>
@@ -32,10 +32,11 @@
         <copy-button :value="output" type="primary">复制</copy-button>
       </div>
     </div>
-  </div>
+  </main-frame>
 </template>
 
 <script>
+import MainFrame from './main-frame.vue'
 import ShareButton from './share-button.vue'
 import CopyButton from './copy-button.vue'
 import util from '../util'
@@ -44,6 +45,7 @@ export default {
   name: 'codec',
 
   components: {
+    MainFrame,
     ShareButton,
     CopyButton,
   },

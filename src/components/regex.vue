@@ -1,5 +1,5 @@
 <template>
-  <div id="regex">
+  <main-frame id="regex">
     <h1 class="page-header">正则测试
       <share-button :params="share_params"></share-button>
     </h1>
@@ -27,10 +27,11 @@
       <div>
     </div>
 
-  </div>
+  </main-frame>
 </template>
 
 <script>
+import MainFrame from './main-frame.vue'
 import CopyInput from './copy-input.vue'
 import ShareButton from './share-button.vue'
 import util from '../util'
@@ -39,6 +40,7 @@ export default {
   name: 'regex',
 
   components: {
+    MainFrame,
     CopyInput,
     ShareButton,
   },

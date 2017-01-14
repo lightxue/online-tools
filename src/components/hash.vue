@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main-frame>
     <h1 class="page-header">MD5/SHA
       <share-button :params="share_params"></share-button>
     </h1>
@@ -31,13 +31,14 @@
       <copy-input readonly label="SHA1:" v-model="sha1"/>
       <copy-input readonly label="SHA256:" v-model="sha256"/>
     </div>
-  </div>
+  </main-frame>
 </template>
 
 <script>
 import MD5 from 'blueimp-md5'
 import jsSHA from 'jssha'
 
+import MainFrame from './main-frame.vue'
 import CopyInput from './copy-input.vue'
 import ShareButton from './share-button.vue'
 import util from '../util'
@@ -70,6 +71,7 @@ export default {
   name: 'hash',
 
   components: {
+    MainFrame,
     CopyInput,
     ShareButton,
   },

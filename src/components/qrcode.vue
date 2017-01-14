@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main-frame>
     <h1 class="page-header">二维码
       <share-button :params="share_params"></share-button>
     </h1>
@@ -147,7 +147,7 @@
             <div class="config-output" align="center">
               <qr class="qr"
                 :text="text"
-                :crips="crips"
+                :crisp="crisp"
                 :min-version="min_version"
                 :level="level"
                 :size="size"
@@ -174,7 +174,7 @@
     <div id="output" align="center">
       <qr class="qr"
         :text="text"
-        :crips="crips"
+        :crisp="crisp"
         :min-version="min_version"
         :level="level"
         :size="size"
@@ -193,10 +193,11 @@
         >
       </qr>
     </div>
-  </div>
+  </main-frame>
 </template>
 
 <script>
+import MainFrame from './main-frame.vue'
 import QR from './qr.vue'
 import ShareButton from './share-button.vue'
 import util from '../util'
@@ -205,6 +206,7 @@ export default {
   name: 'qrcode',
 
   components: {
+    MainFrame,
     'qr': QR,
     ShareButton,
   },
@@ -214,7 +216,7 @@ export default {
 
     return {
       text: params.text ? params.text : '',
-      crisp: params.crisp === 'false' ? false: true,
+      crisp: params.crisp === 'false' ? false : true,
       min_version: util.parse_num(params.min_version, 1),
       level: params.level ? params.level : 'L',
       size: util.parse_num(params.size, 300),

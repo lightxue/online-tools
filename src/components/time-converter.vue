@@ -1,5 +1,5 @@
 <template>
-  <div id="time-converter">
+  <main-frame id="time-converter">
     <h1 class="page-header">时间转换
       <share-button :params="share_params"></share-button>
     </h1>
@@ -97,11 +97,12 @@
       <copy-input readonly label="ISO 8601:" v-model="iso8601"/>
     </div>
 
-  </div>
+  </main-frame>
 </template>
 
 <script>
 import moment from 'moment'
+import MainFrame from './main-frame.vue'
 import ShareButton from './share-button.vue'
 import CopyInput from './copy-input.vue'
 import CopyButton from './copy-button.vue'
@@ -111,6 +112,7 @@ export default {
   name: 'time_converter',
 
   components: {
+    MainFrame,
     ShareButton,
     CopyInput,
     CopyButton,

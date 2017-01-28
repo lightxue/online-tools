@@ -56,7 +56,8 @@
             <ul class="list">
               <li>2006-01-02 15:04:05</li>
               <li>2006-01-02T15:04:05+08:00</li>
-              <!--<li>Mon Jan 02 2006 15:04:05 GMT+0800 (CST)</li>-->
+              <li>Mon, 02 Jan 2006 15:04:05 +0800</li>
+              <li>Mon Jan 02 2006 15:04:05 GMT+0800 (CST)</li>
             </ul>
           </div>
           <div class="format">
@@ -88,13 +89,18 @@
                    icon="information">
         </el-button>
       </el-input>
+
+      <div id="options">
+        <el-checkbox v-model="is_utc">展示UTC时间</el-checkbox>
+      </div>
     </div>
 
     <div class="output">
       <copy-input readonly label="时间戳:"  v-model="timestamp"/>
       <copy-input readonly label="本地时间:" v-model="local_time"/>
-      <copy-input readonly label="UTC时间:" v-model="utc"/>
       <copy-input readonly label="ISO 8601:" v-model="iso8601"/>
+      <copy-input readonly label="RFC 822:" v-model="rfc822"/>
+      <copy-input readonly label="RFC 2822:" v-model="rfc2822"/>
     </div>
 
   </main-frame>
@@ -123,6 +129,7 @@ export default {
 
     return {
       input: params.input ? params.input : '',
+      is_utc: params.is_utc === 'true',
       now: moment(),
     }
   },
@@ -150,7 +157,7 @@ export default {
       for (var i = 0; i < trys.length; ++i) {
         var m = trys[i]();
         if (m.isValid()) {
-          return m;
+          return this.is_utc ? m.utc() : m;
         }
       }
       return invalid;
@@ -170,18 +177,27 @@ export default {
       return this.moment.format('YYYY-MM-DD HH:mm:ss');
     },
 
-    utc: function() {
-      if (!this.moment.isValid()) {
-        return '';
-      }
-      return this.moment.clone().utc().format('YYYY-MM-DD HH:mm:ss');
-    },
-
     iso8601: function() {
       if (!this.moment.isValid()) {
         return '';
       }
       return this.moment.format('YYYY-MM-DDTHH:mm:ssZ');
+    },
+
+    rfc822: function() {
+      if (!this.moment.isValid()) {
+        return '';
+      }
+      return this.moment.format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+    },
+
+    rfc2822: function() {
+      if (!this.moment.isValid()) {
+        return '';
+      }
+      var date = this.moment.toDate();
+      //return this.is_utc ? date.toUTCString() : date.toString();
+      return date.toUTCString();
     },
 
     current_time: function() {
@@ -223,7 +239,8 @@ export default {
         return {};
       }
       return {
-        input: this.input
+        input: this.input,
+        is_utc: this.is_utc
       }
     }
   },

@@ -213,13 +213,13 @@ export default {
 .splitter {;
   margin: 0 auto;
   width: 70px;
+  height: 450px;
 }
 
 .flex-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
   overflow: auto;
 }
 

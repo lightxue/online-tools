@@ -199,7 +199,7 @@ export default {
 
 .editor {
   width: ~"calc((100% - 70px) / 2)";
-  height: 300px;
+  height: 450px;
 }
 
 #code-editor {

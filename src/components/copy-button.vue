@@ -29,8 +29,5 @@ export default {
 </script>
 
 <style scoped>
-.copy-input-group {
-  margin-top: 20px;
-}
 </style>
 

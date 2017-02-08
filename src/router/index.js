@@ -12,7 +12,7 @@ import Base64 from '../components/base64.vue'
 import QRCode from '../components/qrcode.vue'
 import Regex from '../components/regex.vue'
 import TimeConverter from '../components/time-converter.vue'
-import TreeView from '../components/tree-view.vue'
+import JsonFormatter from '../components/json-formatter.vue'
 import Dummy from '../components/dummy-route-view.vue'
 import NotFound from '../components/404.vue'
 
@@ -77,6 +77,18 @@ export default new Router({
                     label: '时间转换',
                     path: 'time-converter',
                     component: TimeConverter
+                },
+            ]
+        }, {
+            label: '格式化',
+            path: '/formatter',
+            component: Dummy,
+            children: [
+                {
+                    name: 'json_formatter',
+                    label: 'JSON',
+                    path: 'json',
+                    component: JsonFormatter
                 },
             ]
         }, {

@@ -67,6 +67,21 @@ function hex_unesc(str) {
     return eval('\'' + str + '\'');
 }
 
+function download_text(filename, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
+
 export default {
     qstr_2_obj,
     obj_2_qstr,
@@ -75,4 +90,5 @@ export default {
     parse_num,
     hex_esc,
     hex_unesc,
+    download_text,
 }

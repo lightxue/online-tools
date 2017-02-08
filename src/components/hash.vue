@@ -111,10 +111,10 @@ export default {
     },
 
     share_params: function() {
-        if (!this.text) {
-          return {};
-        }
-        return this.$data;
+      if (!this.text) {
+        return {};
+      }
+      return this.$data;
     }
   },
 

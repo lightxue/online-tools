@@ -123,4 +123,19 @@ label {
   margin-left: 30px;
 }
 
+.custom-input {
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #c0ccda;
+  color: #1f2d3d;
+  font-size: 14px;
+  height: 30px;
+  line-height: 1;
+  padding: 2px 10px;
+  transition: border-color .2s cubic-bezier(.645,.045,.355,1);
+}
+
+.auto-width-notice {
+  width: auto;
+}
 </style>

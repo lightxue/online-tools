@@ -119,7 +119,7 @@ export default {
         title: 'JSON格式错误',
         message: String(error),
         message: pre('pre', {}, String(error)),
-        customClass: 'auto-width-notice code notice',
+        customClass: 'auto-width-notice code',
         duration: 0
       });
     },
@@ -230,9 +230,5 @@ export default {
 
 .splitter div+div {
   margin-top: 40px;
-}
-
-.notice pre {
-  line-height: .8em;
 }
 </style>

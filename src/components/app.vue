@@ -88,7 +88,7 @@ html, body {
 }
 
 .code {
-  font-family: Monaco,Inconsolata,Menlo,'Andale Mono','lucida console','Courier New',monospace;
+  font-family: Monaco, Inconsolata, Menlo, 'Andale Mono', 'lucida console', 'Courier New', monospace;
 }
 
 label {

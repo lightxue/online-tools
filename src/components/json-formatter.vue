@@ -119,7 +119,7 @@ export default {
         title: 'JSON格式错误',
         message: String(error),
         message: pre('pre', {}, String(error)),
-        customClass: 'auto-width-notice code',
+        customClass: 'auto-width-notice code notice',
         duration: 0
       });
     },
@@ -230,5 +230,9 @@ export default {
 
 .splitter div+div {
   margin-top: 40px;
+}
+
+.notice pre {
+  font-family: Monaco, Inconsolata, Menlo, 'Andale Mono', 'lucida console', 'Courier New', monospace;
 }
 </style>

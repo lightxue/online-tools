@@ -46,7 +46,7 @@ html, body {
 
 #main {
   padding: 10px;
-  padding-bottom: 120px;    /* Height for the footer */
+  padding-bottom: 70px;    /* Height for the footer */
 }
 
 #footer {
@@ -54,7 +54,7 @@ html, body {
   bottom: 0;
   width: 100%;
   height: 40px;
-  padding-top: 20px;
+  padding-top: 10px;
   margin-top: 20px;
   color: #777;
   border-top: 1px solid #e5e5e5;

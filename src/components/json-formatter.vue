@@ -182,6 +182,7 @@ export default {
 }
 
 #editors {
+  height: 80vh;
 }
 
 .toolbar {
@@ -199,7 +200,7 @@ export default {
 
 .editor {
   width: ~"calc((100% - 70px) / 2)";
-  height: 450px;
+  height: 100%;
 }
 
 #code-editor {

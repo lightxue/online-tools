@@ -8,7 +8,7 @@
       <label for="text">匹配的字符串:</label>
       <el-input type="textarea"
                 autofocus
-                :autosize="{ minRows: 5}"
+                :rows="5"
                 v-model="text">
       </el-input>
     </div>

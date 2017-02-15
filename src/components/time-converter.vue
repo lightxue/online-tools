@@ -97,7 +97,7 @@
 
     <div class="output">
       <copy-input readonly label="时间戳:"  v-model="timestamp"/>
-      <copy-input readonly label="常见格式:" v-model="normal_time"/>
+      <copy-input readonly label="本地时间:" v-model="local_time"/>
       <copy-input readonly label="ISO 8601:" v-model="iso8601"/>
       <copy-input readonly label="RFC 822:" v-model="rfc822"/>
       <copy-input readonly label="RFC 2822:" v-model="rfc2822"/>
@@ -170,7 +170,7 @@ export default {
       return String(this.moment.unix());
     },
 
-    normal_time: function() {
+    local_time: function() {
       if (!this.moment.isValid()) {
         return '';
       }

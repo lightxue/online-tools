@@ -3,7 +3,6 @@
     <label>{{ label }}</label>
       <el-input :value="value"
                 :readonly="readonly"
-                :autofocus="autofocus"
                 @input="handleInput">
         <el-button slot="append" @click="copy">复制</el-button>
       </el-input>
@@ -20,7 +19,6 @@ export default {
     value: String,
     label: String,
     readonly: Boolean,
-    autofocus: Boolean,
   },
 
   methods: {

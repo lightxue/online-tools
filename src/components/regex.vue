@@ -24,7 +24,7 @@
     <div class="output">
       <label>匹配结果:</label>
       <div id="result" v-html="output">
-      <div>
+      </div>
     </div>
 
   </main-frame>

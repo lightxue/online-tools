@@ -8,7 +8,7 @@
 
     <div id="footer">
       <p>Copyright © 2017 - <a href="http://www.lightxue.com">Light Xue</a> --
-      <a href="https://github.com/lightxue/online-tools">F<span class="mask">or</span>k me</a><p>
+      <a href="https://github.com/lightxue/online-tools">F<span class="mask">or</span>k me</a></p>
     </div>
   </div>
 </template>

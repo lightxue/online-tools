@@ -1,0 +1,6 @@
+PyYAML
+flask
+requests
+uwsgi
+beautifulsoup4
+lxml

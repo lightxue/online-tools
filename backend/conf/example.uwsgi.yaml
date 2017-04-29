@@ -1,0 +1,19 @@
+uwsgi:
+    wsgi-file: online-tools.py
+    chmod-socket: 666
+    http-socket: :5013
+    master: true
+    processes: 1
+    module: application
+    callable: app
+    uid: www-data
+    gid: www-data
+    logdate: true
+    chdir:      /home/lightxue/www/tools/backend
+    virtualenv: venv
+    pythonpath: venv/bin/python3
+    pid:        uwsgi.pid
+    socket: uwsgi.sock
+    logger: file: log/uwsgi.log
+
+# venv/bin/uwsgi --yaml uwsgi.yaml

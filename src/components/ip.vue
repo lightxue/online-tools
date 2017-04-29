@@ -5,7 +5,7 @@
     </h1>
 
     <div class="ip-board">
-      <copy-text :value="display_ip"></copy-text>
+      <copy-text :value="display_ip ? display_ip : '\xa0'"></copy-text>
     </div>
 
     <div class="ip-input">
@@ -18,7 +18,7 @@
     </div>
 
     <div class="output">
-      <div class="panel ipinfo" v-loading=loading_ipinfo>
+      <div class="panel" v-loading=loading_ipinfo>
         <div class="caption" v-if="ipinfo">
           <a :href="'http://ipinfo.io/' + ipinfo.ip" target="_blank">IP Info</a>
           查询结果
@@ -32,7 +32,7 @@
             <tr>
               <td>Network</td>
               <td>
-                <a :href="'http://ipinfo.io/' + ipinfo.as">{{ ipinfo.as }}</a>
+                <a :href="'http://ipinfo.io/' + ipinfo.as" target="_blank">{{ ipinfo.as }}</a>
                 {{ ipinfo.org }}
               </td>
             </tr>
@@ -41,6 +41,21 @@
               <td v-if="!loading_ipinfo">
                   {{ ipinfo.area }}
               </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel" v-loading=loading_ip138>
+        <div class="caption" v-if="ip138">
+          <a :href="'http://ip138.com/ips1388.asp?action=2&ip=' + ip138.ip" target="_blank">IP138</a>
+          查询结果
+        </div>
+        <table v-if="ip138">
+          <tbody>
+            <tr v-for="region in ip138.regions">
+              <td>{{ region.source }}</td>
+              <td>{{ region.city }}</td>
             </tr>
           </tbody>
         </table>
@@ -75,6 +90,8 @@ export default {
             display_ip: '',
             loading_ipinfo: false,
             ipinfo: {},
+            loading_ip138: false,
+            ip138: {},
         }
     },
 
@@ -84,18 +101,18 @@ export default {
                 return {};
             }
             return {
-                ip: this.ip
+                ip: this.display_ip
             };
         }
     },
 
     created: function() {
         this.get_ipinfo(this.ip);
+        this.get_ip138(this.ip);
     },
 
     methods: {
         search: function() {
-            console.log('search');
             if (!/\d+\.\d+\.\d+\.\d+/.test(this.ip)) {
                 this.$message({
                     message: 'IP地址格式错误',
@@ -105,6 +122,7 @@ export default {
             }
             this.display_ip = this.ip;
             this.get_ipinfo(this.ip);
+            this.get_ip138(this.ip);
         },
 
         process_ipinfo: function(ipinfo) {
@@ -163,6 +181,41 @@ export default {
                         type: 'error'
                     });
                 })
+        },
+
+        get_ip138: function(ip) {
+            var _this = this;
+            this.loading_ip138 = true;
+            this.ip138 = {};
+
+            axios.get('http://api.tools.lightxue.com/query/ip/ip138?ip=' + ip)
+                .then(function(rsp) {
+                    var ip = rsp.data.ip;
+                    if (!_this.display_ip && ip) {
+                        _this.display_ip = rsp.data.ip;
+                    }
+                    if (_this.display_ip != ip) {
+                        console.log('ip138 not match with display ip');
+                        console.log('ip --> ' + _this.display_ip);
+                        return ;
+                    }
+                    _this.ip138 = rsp.data
+                    _this.loading_ip138 = false;
+                })
+                .catch(function(error) {
+                    console.log(error);
+                    _this.loading_ip138 = false;
+                    var msg = 'ip138 error';
+                    if (error.response) {
+                        msg += ': ' + error.response.status + ' --> ' +
+                               error.response.data;
+                    }
+                    _this.$message({
+                        showClose: true,
+                        message: msg,
+                        type: 'error'
+                    });
+                })
         }
     }
 }
@@ -178,7 +231,8 @@ export default {
 
   .panel {
     font-size: 18px;
-    margin-top: 20px;
+    margin: 20px 0px;
+    padding: 20px 0px;
     margin-bottom: 20px;
     text-align: center;
   }

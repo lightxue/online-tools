@@ -3,3 +3,9 @@ node_modules/
 dist/
 npm-debug.log
 .idea
+log/
+venv/
+__pycache__
+*.pyc
+conf.yaml
+logger.yaml

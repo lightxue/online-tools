@@ -1,0 +1,51 @@
+version: 1
+disable_existing_loggers: False
+
+formatters:
+    simple:
+        format: '%(asctime)s | %(name)8s | %(levelname)s | %(message)s'
+        datefmt: '%Y-%m-%d %H:%M:%S'
+    detailed:
+        format: '%(asctime)s | %(process)d | %(levelname)s | %(filename)s | %(lineno)d | %(funcName)s | %(message)s'
+        datefmt: '%Y-%m-%d %H:%M:%S'
+
+handlers:
+    console:
+        class: logging.StreamHandler
+        level: DEBUG
+        formatter: detailed
+        stream: ext://sys.stdout
+
+    access_file_handler:
+        class: logging.handlers.TimedRotatingFileHandler
+        level: DEBUG
+        formatter: detailed
+        filename: log/access.log
+        backupCount: 30
+        encoding: utf8
+        when: midnight
+        interval: 1
+        delay: True
+
+    exception_file_handler:
+        class: logging.handlers.TimedRotatingFileHandler
+        level: ERROR
+        formatter: detailed
+        filename: log/exception.log
+        backupCount: 30
+        encoding: utf8
+        when: midnight
+        interval: 1
+        delay: True
+
+loggers:
+    access:
+        level: DEBUG
+        handlers: [console, access_file_handler]
+        propagate: no
+
+    exception:
+        level: ERROR
+        handlers: [console, exception_file_handler]
+
+

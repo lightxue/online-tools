@@ -19,7 +19,8 @@
     "kjua": "^0.1.1",
     "jsoneditor": "^5.5.11",
     "vue": "^2.1.0",
-    "vue-router": "^2.1.0"
+    "vue-router": "^2.1.0",
+    "axios": "^0.16.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

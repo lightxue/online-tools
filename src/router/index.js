@@ -13,6 +13,7 @@ import QRCode from '../components/qrcode.vue'
 import Regex from '../components/regex.vue'
 import TimeConverter from '../components/time-converter.vue'
 import JsonFormatter from '../components/json-formatter.vue'
+import IP from '../components/ip.vue'
 import Dummy from '../components/dummy-route-view.vue'
 import NotFound from '../components/404.vue'
 
@@ -89,6 +90,18 @@ export default new Router({
                     label: 'JSON',
                     path: 'json',
                     component: JsonFormatter
+                },
+            ]
+        }, {
+            label: '查询',
+            path: '/query',
+            component: Dummy,
+            children: [
+                {
+                    name: 'ip',
+                    label: 'IP地址',
+                    path: 'ip',
+                    component: IP
                 },
             ]
         }, {

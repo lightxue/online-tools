@@ -138,4 +138,8 @@ label {
 .auto-width-notice {
   width: auto;
 }
+
+a {
+  text-decoration: none;
+}
 </style>

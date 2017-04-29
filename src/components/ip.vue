@@ -18,6 +18,21 @@
     </div>
 
     <div class="output">
+      <div class="panel" v-loading=loading_ip138>
+        <div class="caption" v-if="ip138">
+          <a :href="'http://ip138.com/ips1388.asp?action=2&ip=' + ip138.ip" target="_blank">IP138</a>
+          查询结果
+        </div>
+        <table v-if="ip138">
+          <tbody>
+            <tr v-for="region in ip138.regions">
+              <td>{{ region.source }}</td>
+              <td>{{ region.city }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
       <div class="panel" v-loading=loading_ipinfo>
         <div class="caption" v-if="ipinfo">
           <a :href="'http://ipinfo.io/' + ipinfo.ip" target="_blank">IP Info</a>
@@ -46,20 +61,6 @@
         </table>
       </div>
 
-      <div class="panel" v-loading=loading_ip138>
-        <div class="caption" v-if="ip138">
-          <a :href="'http://ip138.com/ips1388.asp?action=2&ip=' + ip138.ip" target="_blank">IP138</a>
-          查询结果
-        </div>
-        <table v-if="ip138">
-          <tbody>
-            <tr v-for="region in ip138.regions">
-              <td>{{ region.source }}</td>
-              <td>{{ region.city }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
 
   </main-frame>

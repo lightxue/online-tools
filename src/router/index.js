@@ -18,7 +18,7 @@ import Dummy from '../components/dummy-route-view.vue'
 import NotFound from '../components/404.vue'
 
 export default new Router({
-    mode: 'history',
+    //mode: 'history',
     routes: [
         {
             label: '编码解码',

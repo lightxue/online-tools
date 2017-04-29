@@ -22,10 +22,10 @@ export default {
       }
       else if (Object.keys(this.params).length > 0) {
         var qs = util.obj_2_qstr(this.params);
-        return location.origin + location.pathname + '?' + qs;
+        return location.origin + location.pathname + '?' + qs + location.hash;
       }
       else {
-        return location.origin + location.pathname;
+        return location.origin + location.pathname + location.hash;
       }
     },
   },

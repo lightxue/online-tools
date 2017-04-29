@@ -21,6 +21,10 @@
         <label>缩进:</label>
         <input v-model.number="indent" type="number" @change="update_indent" class="custom-input"></input>
       </div>
+
+      <div class="tool">
+        <el-button @click="$router.push({name: 'home'})">回到首页</el-button>
+      </div>
     </div>
 
     <div id="editors">

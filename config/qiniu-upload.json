@@ -1,0 +1,7 @@
+{
+   "src_dir"            :   "dist",
+   "bucket"             :   "tools",
+   "ignore_dir"         :   false,
+   "overwrite"          :   true,
+   "rescan_local"       :   true
+}

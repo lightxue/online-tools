@@ -84,7 +84,7 @@ export default {
     },
 
     data () {
-        var params = util.qstr_2_obj();
+        var params = this.$route.query;
 
         return {
             ip: params.ip ? params.ip : '',

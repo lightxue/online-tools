@@ -55,10 +55,10 @@ export default {
   },
 
   data () {
-    var params = util.qstr_2_obj();
+    var params = this.$route.query;
 
     return {
-      is_enc: !(params.is_enc === 'false'),
+      is_enc: params.is_enc === 'true',
       input: params.input ? params.input : '',
       is_valid: true,
       output: '',

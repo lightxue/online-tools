@@ -11,4 +11,12 @@ const app = new Vue({
   render: h => h(App)
 });
 
+router.afterEach((route) => {
+  try {
+    _hmt.push(['_trackPageview', route.path]);
+  }
+  catch (err) {
+  }
+})
+
 app.$mount('#app');

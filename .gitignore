@@ -9,3 +9,4 @@ __pycache__
 *.pyc
 conf.yaml
 logger.yaml
+uwsgi.yaml

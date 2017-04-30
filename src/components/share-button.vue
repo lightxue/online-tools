@@ -20,12 +20,13 @@ export default {
       if (this.url) {
         return this.url;
       }
-      else if (Object.keys(this.params).length > 0) {
+      var path = location.origin + location.pathname + '#' + this.$route.path;
+      if (Object.keys(this.params).length > 0) {
         var qs = util.obj_2_qstr(this.params);
-        return location.origin + location.pathname + '?' + qs + location.hash;
+        return path + '?' + qs;
       }
       else {
-        return location.origin + location.pathname + location.hash;
+        return path;
       }
     },
   },

@@ -77,7 +77,7 @@ export default {
   },
 
   data () {
-    var params = util.qstr_2_obj();
+    var params = this.$route.query;
 
     return {
       is_upper: params.is_upper === 'true',

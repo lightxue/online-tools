@@ -46,7 +46,7 @@ export default {
   },
 
   data () {
-    var params = util.qstr_2_obj();
+    var params = this.$route.query;
 
     return {
       re: params.re ? params.re : '',

@@ -7,19 +7,24 @@ GITHUB_PAGES_BRANCH=master
 QINIU_CONFIG=config/qiniu-upload.json
 
 help:
-	@echo 'Makefile for a online tools                                               '
-	@echo '                                                                          '
-	@echo 'Usage:                                                                    '
-	@echo '   make serve                          serve site at http://localhost:8080'
-	@echo '   make html                           (re)generate the web site          '
-	@echo '   make clean                          remove the generated files         '
-	@echo '   make cleanall                       remove the node and generated files'
-	@echo '   make github                         upload the web site via gh-pages   '
-	@echo '   make cdn                            upload the web site to CDN         '
-	@echo '                                                                          '
-	@echo '                                                                          '
+	@echo 'Makefile for a online tools                                                 '
+	@echo '                                                                            '
+	@echo 'Usage:                                                                      '
+	@echo '   make serve                          serve site at http://localhost:8080  '
+	@echo '   make html                           (re)generate the web site            '
+	@echo '   make clean                          remove the generated files           '
+	@echo '   make cleanall                       remove the node and generated files  '
+	@echo '   make github                         upload the web site via gh-pages     '
+	@echo '   make cdn                            upload the web site to CDN           '
+	@echo '   make release                        upload the web site to github and CDN'
+	@echo '                                                                            '
+	@echo '                                                                            '
 
 html:
+	npm run build
+
+publish:
+	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 	npm run build
 
 clean:
@@ -31,13 +36,16 @@ cleanall: clean
 serve:
 	npm run dev
 
-github: html
+github: publish
 	ghp-import -m "Generate static site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
 	git push origin $(GITHUB_PAGES_BRANCH)
 
 # 上传到七牛空间
-cdn: html
+cdn: publish
 	qshell qupload $(QINIU_CONFIG)
 
-.PHONY: html help clean cleanall serve github
+release: github cdn
+	qshell qupload $(QINIU_CONFIG)
+
+.PHONY: html help clean cleanall serve github cdn release
 

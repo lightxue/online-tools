@@ -37,6 +37,7 @@ serve:
 	npm run dev
 
 github: publish
+	echo 'tools.lightxue.com' > $(OUTPUTDIR)/CNAME
 	ghp-import -m "Generate static site" -b $(GITHUB_PAGES_BRANCH) $(OUTPUTDIR)
 	git push origin $(GITHUB_PAGES_BRANCH)
 

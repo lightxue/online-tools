@@ -7,7 +7,7 @@
     </div>
 
     <div id="footer">
-      <p>Copyright © 2017 - <a href="http://www.lightxue.com">Light Xue</a> --
+      <p>Copyright © {{ year }} - <a href="http://www.lightxue.com">Light Xue</a> --
       <a href="https://github.com/lightxue/online-tools">F<span class="mask">or</span>k me</a></p>
     </div>
   </div>
@@ -21,7 +21,9 @@ export default {
   },
 
   data () {
+    var year = new Date().getYear() + 1900;
     return {
+      year
     }
   },
 

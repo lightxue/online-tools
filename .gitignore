@@ -10,3 +10,4 @@ __pycache__
 conf.yaml
 logger.yaml
 uwsgi.yaml
+package-lock.json

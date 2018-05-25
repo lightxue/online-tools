@@ -22,7 +22,7 @@ export default {
       }
       var path = location.origin + location.pathname + '#' + this.$route.path;
       if (Object.keys(this.params).length > 0) {
-        var qs = util.obj_2_qstr(this.params);
+        var qs = util.obj_2_qstr(this.params) + '&is_share=true';
         return path + '?' + qs;
       }
       else {

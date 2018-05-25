@@ -212,7 +212,9 @@ export default {
   },
 
   data () {
-    var params = this.$route.query;
+    var is_share = this.$route.query.is_share === 'true';
+    var store = util.get_local_storage(this.$route.name);
+    var params = is_share ? this.$route.query : store;
 
     return {
       text: params.text ? params.text : '',
@@ -239,12 +241,9 @@ export default {
 
   computed: {
     share_params: function() {
-        if (!this.text) {
-          return {};
-        }
-        return {
-          text: this.text
-        };
+      var data = this.text ? {text: this.text} : {};
+      util.set_local_storage(this.$route.name, data);
+      return data;
     }
   },
 

@@ -82,6 +82,42 @@ function download_text(filename, text) {
     }
 }
 
+function get_local_storage(item) {
+    try {
+        var data = window.localStorage.getItem(item);
+        var ret = JSON.parse(data);
+        return ret ? ret : {};
+    }
+    catch (err) {
+        console.log('get_local_storage error', item);
+        console.log(err);
+        return {};
+    }
+}
+
+function set_local_storage(item, value) {
+    try {
+        data = {};
+        for (var key in value) {
+            if (value.hasOwnProperty(key)) {
+                data[key] = value[key].toString();
+            }
+        }
+        var data = JSON.stringify(data);
+        window.localStorage.setItem(item, data);
+    }
+    catch (err) {
+        console.log('set_local_storage error', item);
+        console.log(err);
+    }
+}
+
+function get_recovery(name, query) {
+    var is_share = query.is_share === 'true';
+    var store = util.get_local_storage(name);
+    return is_share ? query : store;
+}
+
 export default {
     qstr_2_obj,
     obj_2_qstr,
@@ -91,4 +127,7 @@ export default {
     hex_esc,
     hex_unesc,
     download_text,
+    get_local_storage,
+    set_local_storage,
+    get_recovery,
 }

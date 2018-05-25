@@ -46,7 +46,9 @@ export default {
   },
 
   data () {
-    var params = this.$route.query;
+    var is_share = this.$route.query.is_share === 'true';
+    var store = util.get_local_storage(this.$route.name);
+    var params = is_share ? this.$route.query : store;
 
     return {
       re: params.re ? params.re : '',
@@ -86,10 +88,9 @@ export default {
     },
 
     share_params: function() {
-        if (!this.text && !this.re) {
-          return {};
-        }
-        return this.$data;
+      var data = this.text || this.re ? this.$data : {};
+      util.set_local_storage(this.$route.name, data);
+      return data;
     }
   },
 

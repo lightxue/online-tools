@@ -55,7 +55,9 @@ export default {
   },
 
   data () {
-    var params = this.$route.query;
+    var is_share = this.$route.query.is_share === 'true';
+    var store = util.get_local_storage(this.$route.name);
+    var params = is_share ? this.$route.query : store;
 
     return {
       is_enc: params.is_enc === 'true',
@@ -67,13 +69,13 @@ export default {
 
   computed: {
     share_params: function() {
-      if (!this.input) {
-        return {};
-      }
-      return {
+      var data = {
         input: this.input,
         is_enc: this.is_enc
       };
+      data = this.input ? data : {};
+      util.set_local_storage(this.$route.name, data);
+      return data;
     },
   },
 

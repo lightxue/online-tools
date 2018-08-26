@@ -14,6 +14,7 @@ import Regex from '../components/regex.vue'
 import TimeConverter from '../components/time-converter.vue'
 import JsonFormatter from '../components/json-formatter.vue'
 import IP from '../components/ip.vue'
+import AreaCode from '../components/area-code.vue'
 import Dummy from '../components/dummy-route-view.vue'
 import NotFound from '../components/404.vue'
 
@@ -102,6 +103,11 @@ export default new Router({
                     label: 'IP地址',
                     path: 'ip',
                     component: IP
+                }, {
+                    name: 'area_code',
+                    label: '行政区号',
+                    path: 'area-code',
+                    component: AreaCode
                 },
             ]
         }, {

@@ -118,6 +118,10 @@ function get_recovery(name, query) {
     return is_share ? query : store;
 }
 
+function is_num(text) {
+    return !isNaN(text);
+}
+
 export default {
     qstr_2_obj,
     obj_2_qstr,
@@ -130,4 +134,5 @@ export default {
     get_local_storage,
     set_local_storage,
     get_recovery,
+    is_num,
 }

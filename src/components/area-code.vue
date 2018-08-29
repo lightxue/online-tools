@@ -21,16 +21,21 @@
           </div>
 
           <div class="area">
-            <copy-tag class="name" v-if="item.province":value="item.province.name">
-              <hi-keyword
-                :value="item.province.name" :kw="input"></hi-keyword>
-            </copy-tag>
-            <copy-tag class="name" v-if="item.city":value="item.city.name">
-              <hi-keyword class="name" :value="item.city.name" :kw="input" v-if="item.city"></hi-keyword>
-            </copy-tag>
-            <copy-tag class="name" v-if="item.county":value="item.county.name">
-              <hi-keyword class="name" :value="item.county.name" :kw="input" v-if="item.county"></hi-keyword>
-            </copy-tag>
+            <span class="name" v-if="item.province">
+              <copy-tag :value="item.province.name">
+                <hi-keyword :value="item.province.name" :kw="input"></hi-keyword>
+              </copy-tag>
+            </span>
+            <span class="name" v-if="item.city">
+              <copy-tag :value="item.city.name">
+                <hi-keyword :value="item.city.name" :kw="input"></hi-keyword>
+              </copy-tag>
+            </span>
+            <span class="name" v-if="item.county">
+              <copy-tag :value="item.county.name">
+                <hi-keyword :value="item.county.name" :kw="input"></hi-keyword>
+              </copy-tag>
+            </span>
           </div>
       </div>
     </div>
@@ -174,7 +179,7 @@ export default {
   }
 
   .output .area .name:after {
-    content: " ☞";
+    content: " \2192 ";
   }
 
   .output .area .name:last-child:after {

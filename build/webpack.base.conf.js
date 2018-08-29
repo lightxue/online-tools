@@ -70,6 +70,7 @@ module.exports = {
   },
   vue: {
     loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
+    preserveWhitespace: false,
     postcss: [
       require('autoprefixer')({
         browsers: ['last 2 versions']

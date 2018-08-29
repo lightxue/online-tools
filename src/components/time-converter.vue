@@ -149,6 +149,10 @@ export default {
           var is_match = (/^\d{8}$/.test(input));
           return is_match ? moment(input, 'YYYYMMDD') : invalid;
         },
+        () => {
+          var is_match = (/^\d{11,}$/.test(input));
+          return is_match ? moment(Number(input)) : invalid;
+        },
         () => {return moment.unix(Number(input));},
         () => {return moment(input);},
         () => {return moment(input, 'HH:mm:ss');},

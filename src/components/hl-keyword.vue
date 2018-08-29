@@ -1,5 +1,5 @@
 <template>
-    <span class="hi-keyword">
+    <span class="hl-keyword">
       <span v-for="(item, i) in tokens" :class="item.class"
         >{{ item.content }}</span>
     </span>
@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name: 'hi-keyword',
+    name: 'hl-keyword',
 
     props: {
         value: String,

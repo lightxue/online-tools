@@ -15,25 +15,25 @@
       <div v-for="(item, index) in output">
           <div class="code">
             <copy-tag :value="item.code">
-              <hi-keyword :value="item.code" :kw="input">
-              </hi-keyword>
+              <hl-keyword :value="item.code" :kw="input">
+              </hl-keyword>
             </copy-tag>
           </div>
 
           <div class="area">
             <span class="name" v-if="item.province">
               <copy-tag :value="item.province.name">
-                <hi-keyword :value="item.province.name" :kw="input"></hi-keyword>
+                <hl-keyword :value="item.province.name" :kw="input"></hl-keyword>
               </copy-tag>
             </span>
             <span class="name" v-if="item.city">
               <copy-tag :value="item.city.name">
-                <hi-keyword :value="item.city.name" :kw="input"></hi-keyword>
+                <hl-keyword :value="item.city.name" :kw="input"></hl-keyword>
               </copy-tag>
             </span>
             <span class="name" v-if="item.county">
               <copy-tag :value="item.county.name">
-                <hi-keyword :value="item.county.name" :kw="input"></hi-keyword>
+                <hl-keyword :value="item.county.name" :kw="input"></hl-keyword>
               </copy-tag>
             </span>
           </div>
@@ -47,7 +47,7 @@ import MainFrame from './main-frame.vue'
 import ShareButton from './share-button.vue'
 import CopyText from './copy-text.vue'
 import CopyTag from './copy-tag.vue'
-import HiKeyword from './hi-keyword.vue'
+import HlKeyword from './hl-keyword.vue'
 import util from '../util'
 import codes from 'assets/area-code.json'
 
@@ -60,7 +60,7 @@ export default {
         ShareButton,
         CopyText,
         CopyTag,
-        HiKeyword,
+        HlKeyword,
     },
 
     data () {

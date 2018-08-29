@@ -150,7 +150,7 @@ export default {
           return is_match ? moment(input, 'YYYYMMDD') : invalid;
         },
         () => {
-          var is_match = (/^\d{11,}$/.test(input));
+          var is_match = (/^\d{13,}$/.test(input));
           return is_match ? moment(Number(input)) : invalid;
         },
         () => {return moment.unix(Number(input));},
@@ -220,12 +220,14 @@ export default {
       var DAY = 86400;
       var HOUR = 3600;
       var MIN = 60;
-      var duration = Math.abs((this.now - this.moment) / 1000);
+      var duration = (this.moment - this.now) / 1000;
+      var sign = duration >= 0 ? '+' : '-';
+      duration = Math.abs(duration);
       var day = Math.floor(duration / DAY);
       var hour = Math.floor(duration % DAY / HOUR);
       var min = Math.floor(duration % HOUR / MIN);
       var sec = Math.floor(duration % MIN);
-      var display = '';
+      var display = sign;
       if (day) {
         display += day + '天';
       }

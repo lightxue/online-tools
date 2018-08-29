@@ -276,6 +276,14 @@ export default {
   margin: 0 auto;
 }
 
+#current tr {
+  border: 0;
+}
+
+#current td {
+  line-height: 1;
+}
+
 #current .display-button {
   font-size: inherit;
   font-family: inherit;

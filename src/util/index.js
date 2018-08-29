@@ -114,7 +114,7 @@ function set_local_storage(item, value) {
 
 function get_recovery(name, query) {
     var is_share = query.is_share === 'true';
-    var store = util.get_local_storage(name);
+    var store = get_local_storage(name);
     return is_share ? query : store;
 }
 

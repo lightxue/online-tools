@@ -46,9 +46,7 @@ export default {
   },
 
   data () {
-    var is_share = this.$route.query.is_share === 'true';
-    var store = util.get_local_storage(this.$route.name);
-    var params = is_share ? this.$route.query : store;
+    var params = util.get_recovery(this.$route.name, this.$route.query)
 
     return {
       re: params.re ? params.re : '',

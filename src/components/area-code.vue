@@ -64,7 +64,7 @@ export default {
     },
 
     data () {
-        let params = this.$route.query;
+        var params = util.get_recovery(this.$route.name, this.$route.query)
 
         return {
             input: params.input ? params.input : '',
@@ -74,12 +74,9 @@ export default {
 
     computed: {
         share_params: function() {
-            if (!this.input) {
-                return {};
-            }
-            return {
-                input: this.input
-            };
+            var data = this.input ? { input: this.input } : {};
+            util.set_local_storage(this.$route.name, data);
+            return data;
         },
         output: function() {
             let res_codes = [], res = []

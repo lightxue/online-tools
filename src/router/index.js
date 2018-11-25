@@ -105,7 +105,7 @@ export default new Router({
                     component: IP
                 }, {
                     name: 'area_code',
-                    label: '行政区号',
+                    label: '行政编码',
                     path: 'area-code',
                     component: AreaCode
                 },

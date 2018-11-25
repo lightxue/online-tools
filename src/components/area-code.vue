@@ -1,6 +1,6 @@
 <template>
   <main-frame id="area-code">
-    <h1 class="page-header">行政区号查询
+    <h1 class="page-header">行政编码查询
       <share-button :params="share_params"></share-button>
     </h1>
 

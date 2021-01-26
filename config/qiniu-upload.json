@@ -1,6 +1,6 @@
 {
    "src_dir"            :   "dist",
-   "bucket"             :   "tools",
+   "bucket"             :   "light-tools",
    "ignore_dir"         :   false,
    "overwrite"          :   true,
    "rescan_local"       :   true
